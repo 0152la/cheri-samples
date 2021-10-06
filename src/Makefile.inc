@@ -6,7 +6,7 @@ SSHPORT ?= 0
 .c:
 	${CC} ${CFLAGS} -o $@ $<
 
-TARGETS = simple simple_wrong
+TARGETS = simple simple_wrong derived derived_wrong
 
 all: ${TARGETS}
 

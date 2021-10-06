@@ -15,8 +15,7 @@ main()
         size_t derived_size = 1024;
 	size_t offset = 256;
 	uint8_t* c1 = malloc(max_size);
-	void* c2 = (void*) c1;
-	cheri_bounds_set(c2, derived_size); 
+	uint8_t* c2 = cheri_bounds_set(c1, derived_size); 
 	assert(derived_size + offset < max_size);
 	printf("c2[offset] = %d\n", *(c2 + derived_size + offset));
 	assert(0 && "Expected failure state not triggered.");
