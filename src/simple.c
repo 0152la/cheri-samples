@@ -11,13 +11,8 @@
 int
 main()
 {
-	size_t size = 4096;
-	size_t offset = 1024;
-	assert(0 <= offset < size - sizeof(size_t));
-	uint8_t* ptr = malloc(size);
-	uint8_t* ptr_offset = ptr + offset;
-	size_t to_store = 22;
-	*(ptr_offset) = to_store;
-	printf("ptr[offset] == %d\n", *(ptr + offset));
-	assert(*(ptr + offset) == to_store);
+	uint8_t* ptr = malloc(4096);
+	uint8_t* ptr_offset = ptr + 1024;
+	*(ptr_offset) = 42;
+	assert(*(ptr + 1024) == 42);
 }

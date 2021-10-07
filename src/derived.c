@@ -11,15 +11,9 @@
 int
 main()
 {
-	size_t max_size = 4096;
-        size_t derived_size = 1024;
-	size_t offset = 256;
-	uint8_t* c1 = malloc(max_size);
-	uint8_t* c2 = cheri_bounds_set(c1, derived_size); 
-	uint8_t* c2_offset = c2 + offset;
-
-	size_t to_store = 42;
-	*c2_offset = to_store;
-	printf("c2[offset] = %d\n", *(c2 + offset));
-	assert(*(c2 + offset) == to_store);
+	uint8_t* c1 = malloc(4096);
+	uint8_t* c2 = cheri_bounds_set(c1, 1024); 
+	uint8_t* c2_offset = c2 + 256;
+	*c2_offset = 42;
+	assert(*(c2 + 256) == 42);
 }

@@ -11,10 +11,7 @@
 int
 main()
 {
-	size_t size = 4096;
-	size_t offset = 1024;
-	assert(0 <= offset < size - sizeof(size_t));
-	uint8_t* ptr = malloc(size);
-	printf("ptr[offset] == %d\n", *(ptr + size + offset));
+	uint8_t* ptr = malloc(4096);
+	printf("ptr[offset] == %d\n", *(ptr + 4608));
 	assert(0 && "Expected failure state not triggered.");
 }
